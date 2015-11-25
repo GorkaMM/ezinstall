@@ -247,7 +247,6 @@ elif [[ "$(uname)" == 'Linux' ]]; then
             echo "Only CentOS 7 is supported for now, aborting."
             exit 1
         fi
-    fi
     elif [[ $distribution == 'debian' ]]; then
 
         if [[ $debian_major_version == '8' ]]; then
@@ -277,10 +276,11 @@ elif [[ "$(uname)" == 'Linux' ]]; then
         install_openblas
         fi        
         else
-            echo "Only Jessie Debian 8 is supported for now, aborting."
+            echo 'Only Jessie Debian 8 is supported for now, aborting.'
             exit 1
         fi
-    fi
+    
+
 
 else
     # Unsupported

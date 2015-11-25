@@ -1,6 +1,5 @@
-# [DEPRECEATED REPOSITORY, DO NOT USE]
 
-# For those new, please use the instructions from our website to install torch: http://torch.ch/docs/getting-started.html#_
+# install-deps updated for use on Debian 8.x #_
 
 The goal of this script is to enable one line installs. To install Torch on any machine, just do:
 
