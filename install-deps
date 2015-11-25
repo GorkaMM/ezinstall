@@ -122,8 +122,12 @@ elif [[ "$(uname)" == 'Linux' ]]; then
     elif [[ "$DISTRO" = "centos" ]]; then
         distribution="centos"
         centos_major_version="$VERSION"
+    # Detect Debian
+    elif [[ "$DISTRO" = "debian" ]]; then
+        distribution="debian"
+        debian_major_version="$VERSION"        
     else
-        echo '==> Only Ubuntu, elementary OS, Fedora, Archlinux and CentOS distributions are supported.'
+        echo '==> Only Ubuntu, Debian 8 elementary OS, Fedora, Archlinux and CentOS distributions are supported.'
         exit 1
     fi
 
@@ -241,6 +245,39 @@ elif [[ "$(uname)" == 'Linux' ]]; then
             install_openblas
         else
             echo "Only CentOS 7 is supported for now, aborting."
+            exit 1
+        fi
+    fi
+    elif [[ $distribution == 'debian' ]]; then
+
+        if [[ $debian_major_version == '8' ]]; then
+        
+        #Basic package required for Torch
+        declare -a target_pkgs
+            target_pkgs=( build-essential gcc g++ curl \
+                      cmake libreadline-dev git-core libqt4-core libqt4-gui \
+                      libqt4-dev libjpeg-dev libpng-dev ncurses-dev \
+                      imagemagick libzmq3-dev gfortran unzip gnuplot \
+                      gnuplot-x11 ipython )
+            
+        sudo apt-get update
+
+        sudo apt-get update
+        sudo apt-get install -y "${target_pkgs[@]}"
+
+
+        #require for iTorch
+        sudo apt-get install nodejs nodejs-legacy #legacy -> http://stackoverflow.com/questions/21168141/can-not-install-packages-using-node-package-manager-in-ubuntu
+        sudo apt-get install libssl-dev
+        sudo apt-get install python-zmq
+
+        #require for common torch plug-ins
+        sudo apt-get install sox libsox-dev libsox-fmt-all npm libgraphicsmagick1-dev
+
+        install_openblas
+        fi        
+        else
+            echo "Only Jessie Debian 8 is supported for now, aborting."
             exit 1
         fi
     fi
