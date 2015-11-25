@@ -274,7 +274,7 @@ elif [[ "$(uname)" == 'Linux' ]]; then
         sudo apt-get install sox libsox-dev libsox-fmt-all libgraphicsmagick1-dev
 
 	#other requires
-	sudo apt-get install libprotobuf-dev protobuf-compiler
+	sudo apt-get install libprotobuf-dev protobuf-compiler libhdf5-8 libhdf5-dev
 
         install_openblas
         fi        
