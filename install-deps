@@ -266,15 +266,15 @@ elif [[ "$(uname)" == 'Linux' ]]; then
 
 
         #require for iTorch
-        sudo apt-get install nodejs nodejs-legacy #legacy -> http://stackoverflow.com/questions/21168141/can-not-install-packages-using-node-package-manager-in-ubuntu
+        #sudo apt-get install nodejs nodejs-legacy #legacy -> http://stackoverflow.com/questions/21168141/can-not-install-packages-using-node-package-manager-in-ubuntu
         sudo apt-get install libssl-dev
         sudo apt-get install python-zmq
 
         #require for common torch plug-ins
-        sudo apt-get install sox libsox-dev libsox-fmt-all npm libgraphicsmagick1-dev
+        sudo apt-get install sox libsox-dev libsox-fmt-all libgraphicsmagick1-dev
 
 	#other requires
-	sudo apt-get install libprotobuf-dev
+	sudo apt-get install libprotobuf-dev protobuf-compiler
 
         install_openblas
         fi        
@@ -301,5 +301,6 @@ if [[ $ipython_exists ]]; then {
 
 # Done.
 echo "==> Torch7's dependencies have been installed"
+echo "==> On Debian, install node.js and npm separately"
 
 }
