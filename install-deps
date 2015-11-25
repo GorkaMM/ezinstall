@@ -273,6 +273,9 @@ elif [[ "$(uname)" == 'Linux' ]]; then
         #require for common torch plug-ins
         sudo apt-get install sox libsox-dev libsox-fmt-all npm libgraphicsmagick1-dev
 
+	#other requires
+	sudo apt-get install libprotobuf-dev
+
         install_openblas
         fi        
         else
