@@ -122,12 +122,12 @@ elif [[ "$(uname)" == 'Linux' ]]; then
     elif [[ "$DISTRO" = "centos" ]]; then
         distribution="centos"
         centos_major_version="$VERSION"
-    # Detect Debian
-    elif [[ "$DISTRO" = "debian" ]]; then
-        distribution="debian"
-        debian_major_version="$VERSION"        
+    # Detect Raspbian
+    elif [[ "$DISTRO" = "raspbian" ]]; then
+        distribution="raspbian"
+        raspbian_major_version="$VERSION"        
     else
-        echo '==> Only Ubuntu, Debian 8 elementary OS, Fedora, Archlinux and CentOS distributions are supported.'
+        echo '==> Only Ubuntu, Raspbian 8, elementary OS, Fedora, Archlinux and CentOS distributions are supported.'
         exit 1
     fi
 
@@ -247,9 +247,9 @@ elif [[ "$(uname)" == 'Linux' ]]; then
             echo "Only CentOS 7 is supported for now, aborting."
             exit 1
         fi
-    elif [[ $distribution == 'debian' ]]; then
+    elif [[ $distribution == 'raspbian' ]]; then
 
-        if [[ $debian_major_version == '8' ]]; then
+        if [[ $raspbian_major_version == '8' ]]; then
         
         #Basic package required for Torch
         declare -a target_pkgs
